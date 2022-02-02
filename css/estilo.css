@@ -1,0 +1,26 @@
+body{
+    background: #eef9bf;
+}
+header{
+    text-align: center;
+
+}
+.title{
+    color: #75B79E;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 56px;
+    align-items: center;
+    margin-top: 5%;
+    margin-bottom: 6%;
+}
+@media (max-width: 614px){
+ 
+    .title{
+        
+        font-size: 36px;
+        padding: 0 50px;
+       
+    }    
+}    
