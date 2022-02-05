@@ -35,7 +35,7 @@ function distribuirCartas(){
         const content = document.querySelector('.game');
         content.innerHTML += `
         <div class="card" onclick= "selectedCard(this)" data-card="${gameCards[i]}">
-        <img class="front-face remove" src="content/${gameCards[i]}"/>
+        <img class="front-face remove" src="./content/${gameCards[i]}"/>
         <img class="back-face" src="content/front.png"/>
         </div>`;
     }
@@ -52,16 +52,23 @@ function selectedCard(element){
     element.classList.add("flip");
     element.querySelector(".front-face").classList.remove("remove");
     element.querySelector(".back-face").classList.add("remove");
-    count++;
-    count = parseInt(count);
-    console.log(count);
+    
+    
     if(!firstCard){
         firstCard = element;
+        count++;
+        count = parseInt(count);
+        console.log(`contagem: ${count}`);
         return false;
     }
-    secondCard = element;
-    lockgame = true; // ao girar a segunda carta trava o jogo
-    checkMatch();
+    if(element!== firstCard){
+        secondCard = element;
+        lockgame = true; // ao girar a segunda carta trava o jogo
+        count++;
+        count = parseInt(count);
+        console.log(`contagem: ${count}`);
+        checkMatch();
+    }
 } 
 function checkMatch() {
     if(firstCard.dataset.card === secondCard.dataset.card){
@@ -72,7 +79,7 @@ function checkMatch() {
         secondCard = null;
         point++;
         point= parseInt(point);
-        console.log(point);
+        console.log(`pontos:${point}`);
         
     }
     else{
