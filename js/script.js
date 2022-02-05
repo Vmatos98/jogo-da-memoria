@@ -62,7 +62,7 @@ function selectedCard(element){
     secondCard = element;
     lockgame = true; // ao girar a segunda carta trava o jogo
     checkMatch();
-}
+} 
 function checkMatch() {
     if(firstCard.dataset.card === secondCard.dataset.card){
         firstCard.removeAttribute("onclick");
