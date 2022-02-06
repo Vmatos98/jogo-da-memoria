@@ -109,6 +109,7 @@ function endGame(){
     }else{return false;} 
 }
 function timer(){
+    if(point === amount/2){ return false;}
     second++;
     if(second>59){
         minute++;
