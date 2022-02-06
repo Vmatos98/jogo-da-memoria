@@ -13,6 +13,8 @@ let firstCard, secondCard;
 let lockgame = false;
 let count = 0, point = 0;
 let amount;
+let hour =0, minute =0, second =0;
+setInterval(timer,1000);
 function distribuirCartas(){
     amount = prompt("Dgite um valor par entre 4 e 14 para começarmos!");
     while(amount%2 !== 0 || amount < 4 || amount > 14){
@@ -34,9 +36,9 @@ function distribuirCartas(){
         
         const content = document.querySelector('.game');
         content.innerHTML += `
-        <div class="card" onclick= "selectedCard(this)" data-card="${gameCards[i]}">
-        <img class="front-face remove" src="./content/${gameCards[i]}"/>
-        <img class="back-face" src="content/front.png"/>
+        <div class="card" data-identifier="card" onclick= "selectedCard(this)" data-card="${gameCards[i]}">
+        <img class="front-face remove" data-identifier="front-face" src="./content/${gameCards[i]}"/>
+        <img class="back-face" data-identifier="back-face" src="./content/front.png"/>
         </div>`;
     }
     
@@ -79,17 +81,13 @@ function checkMatch() {
         secondCard = null;
         point++;
         point= parseInt(point);
-        console.log(`pontos:${point}`);
-        
+        document.querySelector(".point span").innerText=point;
     }
     else{
         setTimeout(resetCard, 1000);
     }
     if(point === amount/2){
-       const endGame = prompt(`Você ganhou em ${count} rodadas\n Deseja jogar novamente? (S/N)`);
-       if(endGame === "s"||endGame === "S"){
-        location.reload();
-       }else{return false;}
+        setTimeout(endGame, 400);
     }
     
 }
@@ -104,7 +102,26 @@ function resetCard(){
     firstCard = null;
     secondCard = null;
 }
-function resetGame(){
-    
+function endGame(){
+    const endGame = prompt(`Você ganhou em ${count} jogadas e com o tempo de: ${minute} minutos e ${second} segundos\n\n Deseja jogar novamente? (S/N)`);
+    if(endGame === "s"||endGame === "S"){
+     location.reload();
+    }else{return false;} 
+}
+function timer(){
+    second++;
+    if(second>59){
+        minute++;
+        second = 0;
+    }
+    let aux = document.querySelector(".second");
+    if(second < 10){
+        aux.innerText= `0${second}`;
+    }else{aux.innerText= second;}
+    aux = document.querySelector(".minute");
+    if(minute < 10){
+        aux.innerText= `0${minute}`;
+    }else{aux.innerText= minute;}
+  
 }
 distribuirCartas();

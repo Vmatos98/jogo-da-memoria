@@ -21,6 +21,38 @@ main{
     margin-top: 40px;
     margin-bottom: 47px;
 }
+time{
+    position: absolute;
+    right: 30px;
+    width: 100px;
+    color: #75B79E;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    text-align: center;
+}
+time ion-icon{
+    position: absolute;
+    top:0px;
+    right: 100%;
+}    
+.point{
+    position: absolute;
+    right: 30px;
+    width: 100px;
+    top: 200px;
+    color: #75B79E;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    text-align: center;
+}
+.point ion-icon{
+    position: absolute;
+    right: 100%;
+}
 .game{
     display: flex;
     flex-wrap: wrap;
@@ -67,7 +99,19 @@ main{
         font-size: 36px;
         padding: 0 50px;
        
-    }    
+    } 
+    time{  
+        font-size: 25px;
+        right: 20px;
+        width: 80px;
+        position: fixed;
+    }  
+    .point{  
+        font-size: 25px;
+        right: 20px;
+        width: 80px;
+        position: fixed;
+    }     
     .game{
         max-width: 200px;
         margin-left: 0;
